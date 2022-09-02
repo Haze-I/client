@@ -11,26 +11,20 @@ import { FcSpeaker } from "react-icons/fc";
 function App() {
   const [data, setData] = useState("");
 
-  const [searchWord, setSearchWord] = useState("");
+  const [word, setSearchWord] = useState("");
 
   const [useEffect] = useEffect("")
 
   function getMeaning() {
     Axios.get(
-      `https://api.dictionaryapi.dev/api/v2/entries/en_US/${searchWord}`
+      `api/:userId/words/translations/:${word}`
     ).then((response) => {
       setData(response.data[0]);
     });
   }
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const result = await fetch ('http:localhost:3001/api/history')
-  //   }
-  // }
-  // )
-  
-  
+ 
+
   function playAudio() {
     let audio = new Audio(data.phonetics[0].audio);
 
